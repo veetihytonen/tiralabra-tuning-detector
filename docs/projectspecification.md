@@ -22,7 +22,7 @@ The program will be used via CLI. The user gives the name of an audio file as in
 
 ## Time complexity
 
-Program will at best run in O(n log(n)) time, as it is the time complexity of FFT
+Program will at best run in O(n log<sub>2</sub>(n)) time, as it is the time complexity of FFT
 
 ## Programming languages
 
