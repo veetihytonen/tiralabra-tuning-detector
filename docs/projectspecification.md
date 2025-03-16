@@ -17,7 +17,7 @@ Naturally, the decoding and encoding of audio files is necessary to do work on t
 
 ## Program usage
 
-The program will be used via CLI. The user gives the name of an audio file as input for the program, and the program will create a new file containing a pitch corrected version of the original audio file. 
+The program will be used via CLI. The user gives the path of an audio file as input for the program, and the program creates a new file containing a pitch corrected version of the original audio file. 
 
 ## Time complexity
 
