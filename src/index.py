@@ -4,7 +4,7 @@ from file_reader import FileReader
 def main(file_path: str):
     reader = FileReader(file_path)
     try:
-        reader.read_file()
+        print(reader.read_file())
     except:
         exit()
 
