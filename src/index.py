@@ -3,7 +3,7 @@ from argparse import ArgumentParser
 from file_reader import FileReader
 
 
-def main(file_path: str):
+def main(file_path: str) -> None:
     reader = FileReader(file_path)
     try:
         data = reader.read_file()
