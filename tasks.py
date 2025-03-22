@@ -1,5 +1,6 @@
 from invoke import task, Context
 
+
 @task(help={"file": "Path to input file."})
 def start(ctx: Context, file):
     """

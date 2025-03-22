@@ -5,10 +5,11 @@ import numpy as np
 BIT_DEPTH = 16
 SAMPLING_RATE = 44100
 
+
 class FileReader:
     """
     Wrapper for opening and reading WAV file content.
-    
+
     Requirements for file encoding:
     - PCM
     - 16 bits
@@ -16,13 +17,14 @@ class FileReader:
 
     Other encodings are not supported for now.
     """
+
     def __init__(self, file_path: str) -> None:
         self.__file_path = file_path
 
-
     def __open_file(self) -> wa.Wave_read:
         """
-        Currently only supports WAV files with PCM encoding, which is by far the most common encoding for WAV files.
+        Currently only supports WAV files with PCM encoding, 
+        which is by far the most common encoding for WAV files.
         """
         try:
             reader = wa.open(self.__file_path, "rb")
@@ -37,12 +39,12 @@ class FileReader:
         except (EOFError, wa.Error):
             print(
                 "\n"
-                f"File is not in WAV format, is not PCM encoded, or is corrupted: {self.__file_path}"
+                "File is not in WAV format, is not PCM encoded, "
+                f"or is corrupted: {self.__file_path}"
             )
             raise
 
         return reader
-    
 
     def __validate_file_format(self, reader: wa.Wave_read) -> None:
         """
@@ -59,31 +61,30 @@ class FileReader:
         if reader.getsampwidth() != BIT_DEPTH / 8:
             print(
                 "\n"
-                f"File uses {8 * reader.getsampwidth()} bit encoding. Please provide file with {BIT_DEPTH} bit encoding."
-                "\n"
+                f"File uses {8 * reader.getsampwidth()} bit encoding. "
+                f"Please provide file with {BIT_DEPTH} bit encoding."
             )
             raise ValueError("Wrong encoding")
-        
+
         if reader.getframerate() != SAMPLING_RATE:
             print(
                 "\n"
-                f"File uses sampling rate of {reader.getframerate()}kHz. Please provide file with sampling rate of {SAMPLING_RATE}kHz."
-                "\n"
+                f"File uses sampling rate of {reader.getframerate()}kHz. "
+                f"Please provide file with sampling rate of {SAMPLING_RATE}kHz."
             )
             raise ValueError("Wrong sampling rate")
-
 
     def read_file(self) -> np.ndarray:
         try:
             reader = self.__open_file()
         except (FileNotFoundError, EOFError, wa.Error):
             raise
-        
+
         try:
             self.__validate_file_format(reader)
         except ValueError:
             raise
-        
+
         raw = reader.readframes(64)
         reader.close()
 
