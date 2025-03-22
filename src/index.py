@@ -6,7 +6,7 @@ from file_reader import FileReader
 def main(file_path: str):
     reader = FileReader(file_path)
     try:
-        print(reader.read_file())
+        data = reader.read_file()
     except:
         sys.exit()
 
