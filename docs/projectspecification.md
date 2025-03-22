@@ -8,7 +8,7 @@ The aim of the project is to implement an algorithm to detect the tuning of a pi
 
 There are two prominent algorithms, which are necessary for the project:
 
-- Fast furier transform (FFT) to separate a piece of music into its constituent frequencies
+- Fast furier transform (FFT) to separate a piece of music into its constituent frequencies. Specifically, the project will be using Radix-2 Cooley-Tukey version of the algorithm, due to its relative simplicity and wealth of available material on it. 
 - Phase vocoder to change the pitch of audio content while keeping relationship between notes intact
 
 Needless to say, the core topic of the project is signal processing, and analysis of messy real world audio signals. 
